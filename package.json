@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "test": "echo \"ErrorL no test specified\" && exit 1",
+    "devStart": "node server.js"
   },
   "keywords": [],
   "author": "",
