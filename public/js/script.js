@@ -3,8 +3,9 @@ const videoGrid = document.getElementById('video-grid')
 const myVideo = document.createElement('video')
 const peers = {}
 const myPeer = new Peer(undefined, {
-    host: '/',
-    port: '3001'
+    secure: true,
+    host: 'https://git.heroku.com/safe-caverns-88244.git',
+    port: '443'
 })
 
 //mute video so that we don't have to hear ourselves
