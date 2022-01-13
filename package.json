@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"ErrorL no test specified\" && exit 1",
-    "devStart": "node server.js"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
