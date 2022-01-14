@@ -5,7 +5,7 @@ const peers = {}
 const myPeer = new Peer(undefined, {
     secure: true,
     host: 'https://git.heroku.com/safe-caverns-88244.git',
-    port: '443'
+    port: '3001'
 })
 
 //mute video so that we don't have to hear ourselves
