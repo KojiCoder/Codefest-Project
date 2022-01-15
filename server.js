@@ -1,6 +1,6 @@
 //creates a server
 const express = require('express')
-const { ExpressPeerServer } = require('peer')
+//const { ExpressPeerServer } = require('peer')
 const app = express()
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
@@ -8,14 +8,14 @@ const io = require('socket.io')(server)
 //generates id
 const { v4: uuidV4 } = require('uuid')
 
-const peerServer = ExpressPeerServer(server, {
+/*const peerServer = ExpressPeerServer(server, {
     path: '/'
-})
+})*/
 
 app.set('port', (process.env.PORT || 3000));
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
-app.use('/peerjs', peerServer)
+//app.use('/peerjs', peerServer)
 
 //gets request and response
 app.get('/', (req, res) => {
@@ -45,4 +45,4 @@ io.on('connection', socket => {
     })
 })
 
-server.listen(3000)
+//server.listen(3000)
