@@ -5,7 +5,6 @@ const peers = {}
 const myPeer = new Peer("someid", {
     secure: true,
     host: 'codefest-project-wip.herokuapp.com',
-    path: '/' + id
 })
 
 //mute video so that we don't have to hear ourselves
