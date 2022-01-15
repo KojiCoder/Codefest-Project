@@ -1,30 +1,26 @@
 //creates a server
 const express = require('express')
-//const { ExpressPeerServer } = require('peer')
 const app = express()
 const server = require('http').Server(app)
-//const io = require('socket.io')(server)
-
 const socket = require('socket.io')
 const io = socket(server)
+const {ExpressPeerServer} = require('peer');
 
 //generates id
 const { v4: uuidV4 } = require('uuid')
 
-/*const peerServer = ExpressPeerServer(server, {
-    path: '/'
-})*/
+const peerServer = ExpressPeerServer(server, {
+    debug: true
+})
 
 app.set('port', (process.env.PORT || 3000));
 app.set('view engine', 'ejs')
+app.use('/peerjs', peerServer)
 app.use(express.static('public'))
-//app.use('/peerjs', peerServer)
 
 //gets request and response
 app.get('/', (req, res) => {
     res.redirect(`/${uuidV4()}`)
-}).listen(app.get('port'), () => {
-    console.log('App is running, server is listening on port ', app.get('port'));
 })
 
 //directs user to the room
@@ -48,4 +44,4 @@ io.on('connection', socket => {
     })
 })
 
-//server.listen(3000)
+server.listen(process.env.PORT || 3000)
