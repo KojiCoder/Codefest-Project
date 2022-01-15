@@ -2,10 +2,9 @@ const socket = io('/')
 const videoGrid = document.getElementById('video-grid')
 const myVideo = document.createElement('video')
 const peers = {}
-const myPeer = new Peer(undefined, {
+const myPeer = new Peer("someid", {
     secure: true,
-    host: 'https://codefest-project-wip.herokuapp.com/git',
-    port: '3001'
+    host: 'codefest-project-wip.herokuapp.com',
 })
 
 //mute video so that we don't have to hear ourselves
