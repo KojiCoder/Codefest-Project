@@ -2,9 +2,9 @@ const socket = io('/')
 const videoGrid = document.getElementById('video-grid')
 const myVideo = document.createElement('video')
 const peers = {}
-const myPeer = new Peer("someid", {
+const myPeer = new Peer(undefined, {
     secure: true,
-    host: 'codefest-project-wip.herokuapp.com',
+    host: 'https://codefest-project-wip.herokuapp.com',
 })
 
 //mute video so that we don't have to hear ourselves
@@ -34,7 +34,7 @@ myPeer.on('open', id => {
     socket.emit('join-room', ROOM_ID, id)
 })
 
-/*socket.on('user-connected', userId => {
+socket.on('user-connected', userId => {
     console.log('User connected: ' + userId)
 })
 socket.on('user-disconnected', userId => {
@@ -42,7 +42,7 @@ socket.on('user-disconnected', userId => {
         peers[userId].close()
     }
     console.log(userId)
-})*/
+})
 
 socket.on('user-disconnected', (userId, roomId) =>{
     if(peers[userId]){
