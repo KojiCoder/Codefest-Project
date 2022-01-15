@@ -4,7 +4,7 @@ const myVideo = document.createElement('video')
 const peers = {}
 const myPeer = new Peer(undefined, {
     secure: true,
-    host: 'https://codefest-project-wip.herokuapp.com/',
+    host: 'https://codefest-project-wip.herokuapp.com/git',
     port: '3001'
 })
 
