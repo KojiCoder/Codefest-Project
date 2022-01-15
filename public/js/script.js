@@ -4,7 +4,7 @@ const myVideo = document.createElement('video')
 const peers = {}
 const myPeer = new Peer(undefined, {
     secure: true,
-    host: 'https://git.heroku.com/safe-caverns-88244.git',
+    host: 'https://codefest-project-wip.herokuapp.com/',
     port: '3001'
 })
 
