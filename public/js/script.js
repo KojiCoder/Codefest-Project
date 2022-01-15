@@ -2,7 +2,7 @@ const socket = io('/')
 const videoGrid = document.getElementById('video-grid')
 const myVideo = document.createElement('video')
 const peers = {}
-const myPeer = new Peer(id, {
+const myPeer = new Peer("someid", {
     secure: true,
     host: 'codefest-project-wip.herokuapp.com',
     path: '/' + id
