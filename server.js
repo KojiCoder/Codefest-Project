@@ -3,7 +3,10 @@ const express = require('express')
 //const { ExpressPeerServer } = require('peer')
 const app = express()
 const server = require('http').Server(app)
-const io = require('socket.io')(server)
+//const io = require('socket.io')(server)
+
+const socket = require('socket.io')
+const io = socket(server)
 
 //generates id
 const { v4: uuidV4 } = require('uuid')
