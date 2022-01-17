@@ -8,15 +8,14 @@ var myPeer = new Peer(undefined, {
     host: '/',
     path: '/peerjs',
     port: '443'
-    //host: 'https://codefest-project-wip.herokuapp.com',
 })
-
-let myVideoStream
 
 //mute video so that we don't have to hear ourselves
 myVideo.muted = true
 
-//makes call when a new user connects to room
+let myVideoStream
+
+//make connections to any new users that joined the room
 const connectToNewUser = (userId, stream) => {
     const call = myPeer.call(userId, stream)
     const video = document.createElement('video')
@@ -30,7 +29,7 @@ const connectToNewUser = (userId, stream) => {
     peers[userId] = call
 }
 
-//load the video onto the site and play it
+//add a video in the room and play it
 const addVideoStream = (video, stream) => {
     video.srcObject = stream
     video.addEventListener('loadedmetadata', () => {
@@ -39,7 +38,7 @@ const addVideoStream = (video, stream) => {
     videoGrid.append(video)
 }
 
-//sends video and audio to other people in the room
+//get video and audio from users that are in the room
 navigator.mediaDevices.getUserMedia({
     video: true,
     audio: true

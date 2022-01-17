@@ -1,4 +1,4 @@
-//creates a server
+//creates server
 const express = require('express')
 const app = express()
 const server = require('http').Server(app)
@@ -18,12 +18,12 @@ app.set('view engine', 'ejs')
 app.use('/peerjs', peerServer)
 app.use(express.static('public'))
 
-//gets request and response
+//when entering the default, generate a roomid randomly direct it to the new room
 app.get('/', (req, res) => {
     res.redirect(`/${uuidV4()}`)
 })
 
-//directs user to the room
+//directly connects to the room
 app.get('/:room', (req, res) =>{
     res.render('room', { roomId: req.params.room })
 })
@@ -33,9 +33,9 @@ io.on('connection', socket => {
     //when someone connects to a room
     socket.on('join-room', (roomId, userId) => {
         socket.join(roomId)
-        //tells people in the room of a user connection into their room
+        //run this event when user connects to a room
         socket.broadcast.to(roomId).emit('user-connected', userId, roomId)
-        //when someone disconnects from the server
+        //run this event when user disconnects from a room
         socket.on('disconnect', () => {
             socket.broadcast.to(roomId).emit('user-disconnected', userId, roomId)
         })
